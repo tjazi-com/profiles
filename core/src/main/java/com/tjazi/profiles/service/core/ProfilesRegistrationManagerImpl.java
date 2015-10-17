@@ -83,11 +83,11 @@ public class ProfilesRegistrationManagerImpl implements ProfilesRegistrationMana
             if (daoRecordsByUserNameOrEmail.get(0).getEmail().equalsIgnoreCase(email)) {
 
                 log.debug("Found duplicated user profile record for user name: {}", userName);
-                return RegisterNewProfileResponseStatus.USER_NAME_ALREADY_REGISTERED;
+                return RegisterNewProfileResponseStatus.USER_EMAIL_ALREADY_REGISTERED_WITH_DIFFERENT_USER;
             }
             else {
                 log.debug("Found duplicated user profile record for email: {}", email);
-                return RegisterNewProfileResponseStatus.USER_EMAIL_ALREADY_REGISTERED_WITH_DIFFERENT_USER;
+                return RegisterNewProfileResponseStatus.USER_NAME_ALREADY_REGISTERED;
             }
         }
         else
