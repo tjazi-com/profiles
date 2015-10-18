@@ -69,4 +69,70 @@ public class ProfilesRegistrationManager_Tests {
                 responseMessage.getRegisterNewProfileResponseStatus());
     }
 
+    @Test
+    public void DuplicateUserEmail_Test() {
+
+        RegisterNewProfileRequestMessage requestMessage = new RegisterNewProfileRequestMessage();
+
+        final String userName = "Sample user name";
+        final String userEmail = "sample@email.com";
+
+        requestMessage.setEmail(userEmail);
+        requestMessage.setUserName(userName);
+
+        ProfileDataDAOModel storedModel = new ProfileDataDAOModel();
+        storedModel.setEmail("sample@email.com");
+        storedModel.setUserName("Sample user name not duplicated");
+
+        when(profileDAO.findByUserNameOrEmail(userName, userEmail))
+                .thenReturn(Collections.singletonList(storedModel));
+
+        RegisterNewProfileResponseMessage responseMessage = profilesRegistrationManager.registerNewProfile(requestMessage);
+
+        // so we should hit USER_NAME_ALREADY_REGISTERED error
+        assertEquals(RegisterNewProfileResponseStatus.USER_EMAIL_ALREADY_REGISTERED_WITH_DIFFERENT_USER,
+                responseMessage.getRegisterNewProfileResponseStatus());
+    }
+
+    @Test
+    public void ExceptionWhenSavingData_Test() {
+        RegisterNewProfileRequestMessage requestMessage = new RegisterNewProfileRequestMessage();
+
+        final String userName = "Sample user name";
+        final String userEmail = "sample@email.com";
+
+        requestMessage.setEmail(userEmail);
+        requestMessage.setUserName(userName);
+
+        when(profileDAO.findByUserNameOrEmail(userName, userEmail))
+                .thenReturn(null);
+
+        when(profileDAO.save((ProfileDataDAOModel) any(ProfileDataDAOModel.class)))
+                .thenThrow(Exception.class);
+
+        RegisterNewProfileResponseMessage responseMessage = profilesRegistrationManager.registerNewProfile(requestMessage);
+
+        assertEquals(RegisterNewProfileResponseStatus.GENERAL_REGISTRATION_ERROR,
+                responseMessage.getRegisterNewProfileResponseStatus());
+    }
+
+    @Test
+    public void SuccessStatusWhenDataSavedNoExceptions_Test() {
+
+        RegisterNewProfileRequestMessage requestMessage = new RegisterNewProfileRequestMessage();
+
+        final String userName = "Sample user name";
+        final String userEmail = "sample@email.com";
+
+        requestMessage.setEmail(userEmail);
+        requestMessage.setUserName(userName);
+
+        when(profileDAO.findByUserNameOrEmail(userName, userEmail))
+                .thenReturn(new ArrayList<ProfileDataDAOModel>());
+
+        RegisterNewProfileResponseMessage responseMessage = profilesRegistrationManager.registerNewProfile(requestMessage);
+
+        assertEquals(RegisterNewProfileResponseStatus.OK,
+                responseMessage.getRegisterNewProfileResponseStatus());
+    }
 }

@@ -79,7 +79,7 @@ public class ProfilesRegistrationManagerImpl implements ProfilesRegistrationMana
 
         List<ProfileDataDAOModel> daoRecordsByUserNameOrEmail = profileDAO.findByUserNameOrEmail(userName, email);
 
-        if (daoRecordsByUserNameOrEmail.size() > 0) {
+        if (daoRecordsByUserNameOrEmail != null && daoRecordsByUserNameOrEmail.size() > 0) {
             if (daoRecordsByUserNameOrEmail.get(0).getEmail().equalsIgnoreCase(email)) {
 
                 log.debug("Found duplicated user profile record for user name: {}", userName);
