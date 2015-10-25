@@ -92,6 +92,8 @@ public class ProfilesRegistrationManager_Tests {
         // so we should hit USER_NAME_ALREADY_REGISTERED error
         assertEquals(RegisterNewProfileResponseStatus.USER_EMAIL_ALREADY_REGISTERED_WITH_DIFFERENT_USER,
                 responseMessage.getRegisterNewProfileResponseStatus());
+
+        assertNull(responseMessage.getNewProfileUuid());
     }
 
     @Test
@@ -114,6 +116,8 @@ public class ProfilesRegistrationManager_Tests {
 
         assertEquals(RegisterNewProfileResponseStatus.GENERAL_REGISTRATION_ERROR,
                 responseMessage.getRegisterNewProfileResponseStatus());
+
+        assertNull(responseMessage.getNewProfileUuid());
     }
 
     @Test
@@ -134,5 +138,7 @@ public class ProfilesRegistrationManager_Tests {
 
         assertEquals(RegisterNewProfileResponseStatus.OK,
                 responseMessage.getRegisterNewProfileResponseStatus());
+
+        assertNotNull(responseMessage.getNewProfileUuid());
     }
 }

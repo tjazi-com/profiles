@@ -37,14 +37,20 @@ public class ProfilesRegistrationManagerImpl implements ProfilesRegistrationMana
 
         try {
 
-            ProfileDataDAOModel daoModel = this.generateDaoModelBasedOnRequestMessage(requestMessage);
+            UUID newProfileUuid = UUID.randomUUID();
+            ProfileDataDAOModel daoModel = this.generateDaoModelBasedOnRequestMessage(requestMessage, newProfileUuid);
 
             RegisterNewProfileResponseStatus duplicationStatus = this.isDuplicated(daoModel);
 
             responseMessage.setRegisterNewProfileResponseStatus(duplicationStatus);
 
+            // save if duplication is not detected
             if (duplicationStatus == RegisterNewProfileResponseStatus.OK) {
+
                 profileDAO.save(daoModel);
+
+                // set new UUID in the response ONLY if there's not duplicated record already
+                responseMessage.setNewProfileUuid(newProfileUuid);
             }
 
         } catch (Exception ex){
@@ -56,12 +62,13 @@ public class ProfilesRegistrationManagerImpl implements ProfilesRegistrationMana
         return responseMessage;
     }
 
-    private ProfileDataDAOModel generateDaoModelBasedOnRequestMessage(RegisterNewProfileRequestMessage requestMessage){
+    private ProfileDataDAOModel generateDaoModelBasedOnRequestMessage(
+            RegisterNewProfileRequestMessage requestMessage, UUID newProfileUuid){
 
         ProfileDataDAOModel daoModel = RegisterProfileMessage2DaoConverter.convertMessageToModel(requestMessage);
 
         // set missing fields
-        daoModel.setUserUuid(UUID.randomUUID());
+        daoModel.setUserUuid(newProfileUuid);
 
         return daoModel;
     }
