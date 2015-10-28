@@ -1,6 +1,5 @@
 package unittests.core_tests;
 
-import com.sun.javaws.exceptions.InvalidArgumentException;
 import com.tjazi.profiles.messages.GetProfileDetailsRequestMessage;
 import com.tjazi.profiles.messages.GetProfileDetailsResponseMessage;
 import com.tjazi.profiles.messages.GetProfileDetailsResponseStatus;
@@ -15,13 +14,12 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.UUID;
 
-import static org.junit.Assert.*;
-import static org.mockito.Mockito.*;
+import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 /**
  * Created by Krzysztof Wasiak on 28/10/2015.
