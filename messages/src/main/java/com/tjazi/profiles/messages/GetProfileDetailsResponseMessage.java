@@ -1,50 +1,35 @@
-package com.tjazi.profiles.service.dao.model;
+package com.tjazi.profiles.messages;
 
-import javax.persistence.*;
 import java.util.UUID;
 
 /**
- * Created by Krzysztof Wasiak on 16/10/15.
+ * Created by Krzysztof Wasiak on 28/10/2015.
+ *
+ * Details related to single profile.
  */
+public class GetProfileDetailsResponseMessage {
 
-@Entity
-@Table(name="ProfileData")
-public class ProfileDataDAOModel {
-
-    @Id
-    @Column(name="ID")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-
-    @Column(name = "ProfileUUID", unique = true, nullable = false)
+    private GetProfileDetailsResponseStatus responseStatus;
     private UUID profileUuid;
-
-    @Column(name = "UserName", unique = true, nullable = false)
     private String userName;
-
-    @Column(name = "UserEmail", unique = true, nullable = false)
     private String userEmail;
-
-    @Column(name = "Name", unique = false, nullable = false)
     private String name;
-
-    @Column(name = "Surname", unique = false, nullable = false)
     private String surname;
 
-    public long getId() {
-        return id;
+    public GetProfileDetailsResponseStatus getResponseStatus() {
+        return responseStatus;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setResponseStatus(GetProfileDetailsResponseStatus responseStatus) {
+        this.responseStatus = responseStatus;
     }
 
     public UUID getProfileUuid() {
         return profileUuid;
     }
 
-    public void setProfileUuid(UUID userUuid) {
-        this.profileUuid = userUuid;
+    public void setProfileUuid(UUID profileUuid) {
+        this.profileUuid = profileUuid;
     }
 
     public String getUserName() {

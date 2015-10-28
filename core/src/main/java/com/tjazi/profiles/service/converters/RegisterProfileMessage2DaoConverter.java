@@ -12,7 +12,7 @@ public class RegisterProfileMessage2DaoConverter {
 
         ProfileDataDAOModel daoModel = new ProfileDataDAOModel();
 
-        daoModel.setEmail(requestMessage.getEmail());
+        daoModel.setUserEmail(requestMessage.getEmail());
         daoModel.setUserName(requestMessage.getUserName());
         daoModel.setName(requestMessage.getName());
         daoModel.setSurname(requestMessage.getName());

@@ -68,7 +68,7 @@ public class ProfilesRegistrationManagerImpl implements ProfilesRegistrationMana
         ProfileDataDAOModel daoModel = RegisterProfileMessage2DaoConverter.convertMessageToModel(requestMessage);
 
         // set missing fields
-        daoModel.setUserUuid(newProfileUuid);
+        daoModel.setProfileUuid(newProfileUuid);
 
         return daoModel;
     }
@@ -80,14 +80,14 @@ public class ProfilesRegistrationManagerImpl implements ProfilesRegistrationMana
         }
 
         String userName = profileDataDAOModel.getUserName();
-        String email = profileDataDAOModel.getEmail();
+        String email = profileDataDAOModel.getUserEmail();
 
         log.debug("Checking for duplicated profile data in database. User name: '{}', email: '{}'.", userName, email);
 
         List<ProfileDataDAOModel> daoRecordsByUserNameOrEmail = profileDAO.findByUserNameOrEmail(userName, email);
 
         if (daoRecordsByUserNameOrEmail != null && daoRecordsByUserNameOrEmail.size() > 0) {
-            if (daoRecordsByUserNameOrEmail.get(0).getEmail().equalsIgnoreCase(email)) {
+            if (daoRecordsByUserNameOrEmail.get(0).getUserEmail().equalsIgnoreCase(email)) {
 
                 log.debug("Found duplicated user profile record for user name: {}", userName);
                 return RegisterNewProfileResponseStatus.USER_EMAIL_ALREADY_REGISTERED_WITH_DIFFERENT_USER;

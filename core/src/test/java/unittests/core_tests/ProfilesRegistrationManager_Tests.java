@@ -16,7 +16,6 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 
 import static org.mockito.Mockito.*;
 import static org.junit.Assert.*;
@@ -56,7 +55,7 @@ public class ProfilesRegistrationManager_Tests {
         requestMessage.setUserName(userName);
 
         ProfileDataDAOModel storedModel = new ProfileDataDAOModel();
-        storedModel.setEmail("sample1@email_not_duplicated.com");
+        storedModel.setUserEmail("sample1@email_not_duplicated.com");
         storedModel.setUserName(userName);
 
         when(profileDAO.findByUserNameOrEmail(userName, userEmail))
@@ -81,7 +80,7 @@ public class ProfilesRegistrationManager_Tests {
         requestMessage.setUserName(userName);
 
         ProfileDataDAOModel storedModel = new ProfileDataDAOModel();
-        storedModel.setEmail("sample@email.com");
+        storedModel.setUserEmail("sample@email.com");
         storedModel.setUserName("Sample user name not duplicated");
 
         when(profileDAO.findByUserNameOrEmail(userName, userEmail))
