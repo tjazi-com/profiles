@@ -1,8 +1,11 @@
 package com.tjazi.profiles.client;
 
 import com.tjazi.lib.messaging.rest.RestClient;
+import com.tjazi.profiles.messages.GetProfileDetailsResponseMessage;
 import com.tjazi.profiles.messages.RegisterNewProfileRequestMessage;
 import com.tjazi.profiles.messages.RegisterNewProfileResponseMessage;
+
+import java.util.UUID;
 
 /**
  * Created by Krzysztof Wasiak on 10/10/15.
@@ -31,5 +34,9 @@ public class ProfilesClientImpl implements ProfilesClient {
         requestMessage.setSurname(surname);
 
         return (RegisterNewProfileResponseMessage) restClient.sendRequestGetResponse(requestMessage, RegisterNewProfileResponseMessage.class);
+    }
+
+    public GetProfileDetailsResponseMessage GetProfileDetails(UUID profileUuid) {
+        return null;
     }
 }

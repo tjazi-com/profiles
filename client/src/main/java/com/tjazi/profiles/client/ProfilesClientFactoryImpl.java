@@ -1,6 +1,7 @@
 package com.tjazi.profiles.client;
 
 import com.tjazi.lib.messaging.rest.RestClientImpl;
+import org.springframework.stereotype.Service;
 
 import java.net.URI;
 
@@ -8,6 +9,7 @@ import java.net.URI;
  * Created by Krzysztof Wasiak on 10/10/15.
  */
 
+@Service
 public class ProfilesClientFactoryImpl implements ProfilesClientFactory {
 
     public ProfilesClient createProfilesClient(URI targetUri) {
