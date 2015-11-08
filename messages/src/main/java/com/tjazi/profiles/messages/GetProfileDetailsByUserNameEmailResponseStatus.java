@@ -1,11 +1,9 @@
 package com.tjazi.profiles.messages;
 
 /**
- * Created by Krzysztof Wasiak on 28/10/2015.
- *
- * Status of the profile extraction via GetProfileDetailsRequestMessage
+ * Created by Krzysztof Wasiak on 08/11/2015.
  */
-public enum GetProfileDetailsResponseStatus {
+public enum  GetProfileDetailsByUserNameEmailResponseStatus {
 
     /**
      * Unknown status / not set. Should never happen.
@@ -18,9 +16,9 @@ public enum GetProfileDetailsResponseStatus {
     OK,
 
     /**
-     * Profile with the given UUID doesn't exist
+     * Profile with the given user name / email has not been found
      */
-    PROFILE_UUID_NOT_REGISTERED,
+    PROFILE_NOT_FOUND,
 
     /**
      * General error with extracting profile details
