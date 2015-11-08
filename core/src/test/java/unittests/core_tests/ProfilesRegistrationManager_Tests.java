@@ -24,7 +24,7 @@ import static org.junit.Assert.*;
  * Created by Krzysztof Wasiak on 17/10/15.
  */
 @RunWith(MockitoJUnitRunner.class)
-public class ProfilesRegistrationManager_Tests {
+public class ProfilesInformationProvider_ByProfileUuid_Tests {
 
     @Rule
     public ExpectedException thrown = ExpectedException.none();

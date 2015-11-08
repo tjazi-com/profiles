@@ -1,8 +1,6 @@
 package com.tjazi.profiles.service.core;
 
-import com.tjazi.profiles.messages.GetProfileDetailsRequestMessage;
-import com.tjazi.profiles.messages.GetProfileDetailsResponseMessage;
-import com.tjazi.profiles.messages.GetProfileDetailsResponseStatus;
+import com.tjazi.profiles.messages.*;
 import com.tjazi.profiles.service.dao.ProfileDAO;
 import com.tjazi.profiles.service.dao.model.ProfileDataDAOModel;
 import org.slf4j.Logger;
@@ -77,5 +75,11 @@ public class ProfilesInformationProviderImpl implements ProfilesInformationProvi
             responseMessage.setResponseStatus(GetProfileDetailsResponseStatus.GENERAL_ERROR);
             return responseMessage;
         }
+    }
+
+    @Override
+    public GetProfileDetailsByUserNameEmailResponseMessage getProfileDetailsByUserNameEmail(
+            GetProfileDetailsByUserNameEmailRequestMessage requestMessage) {
+        return null;
     }
 }

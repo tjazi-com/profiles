@@ -1,5 +1,7 @@
 package com.tjazi.profiles.service.core;
 
+import com.tjazi.profiles.messages.GetProfileDetailsByUserNameEmailRequestMessage;
+import com.tjazi.profiles.messages.GetProfileDetailsByUserNameEmailResponseMessage;
 import com.tjazi.profiles.messages.GetProfileDetailsRequestMessage;
 import com.tjazi.profiles.messages.GetProfileDetailsResponseMessage;
 
@@ -9,4 +11,6 @@ import com.tjazi.profiles.messages.GetProfileDetailsResponseMessage;
 public interface ProfilesInformationProvider {
 
     GetProfileDetailsResponseMessage getProfileDetails(GetProfileDetailsRequestMessage requestMessage);
+    GetProfileDetailsByUserNameEmailResponseMessage getProfileDetailsByUserNameEmail(
+            GetProfileDetailsByUserNameEmailRequestMessage requestMessage);
 }

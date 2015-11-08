@@ -25,7 +25,7 @@ import static org.mockito.Mockito.when;
  * Created by Krzysztof Wasiak on 28/10/2015.
  */
 @RunWith(MockitoJUnitRunner.class)
-public class ProfilesInformationProvider_Tests {
+public class ProfilesInformationProvider_ByProfileUuid_Tests {
 
     @Rule
     public ExpectedException thrown = ExpectedException.none();
