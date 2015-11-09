@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3c81854d-8a30-45ee-96fc-050378c790af" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/unittests/core_tests/ProfilesInformationProvider_ByUserNameEmail_Tests.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/java/unittests/core_tests/ProfilesRegistrationManager_Tests.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/tjazi/profiles/service/core/ProfilesInformationProviderImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/tjazi/profiles/service/core/ProfilesInformationProviderImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/unittests/core_tests/ProfilesInformationProvider_ByProfileUuid_Tests.java" afterPath="$PROJECT_DIR$/src/test/java/unittests/core_tests/ProfilesInformationProvider_ByProfileUuid_Tests.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/unittests/core_tests/ProfilesInformationProvider_ByUserNameEmail_Tests.java" afterPath="$PROJECT_DIR$/src/test/java/unittests/core_tests/ProfilesInformationProvider_ByUserNameEmail_Tests.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../messages/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../messages/.idea/workspace.xml" />
     </list>
     <ignored path="profiles-core.iws" />
@@ -36,24 +34,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ProfilesInformationProviderImpl.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ProfilesInformationProviderImpl.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/tjazi/profiles/service/core/ProfilesInformationProviderImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.41935483">
-              <caret line="122" column="13" selection-start-line="122" selection-start-column="13" selection-end-line="122" selection-end-column="13" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="127" column="95" selection-start-line="127" selection-start-column="95" selection-end-line="127" selection-end-column="95" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ProfilesInformationProvider_ByUserNameEmail_Tests.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ProfilesInformationProvider_ByUserNameEmail_Tests.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/unittests/core_tests/ProfilesInformationProvider_ByUserNameEmail_Tests.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="112" column="67" selection-start-line="112" selection-start-column="67" selection-end-line="112" selection-end-column="67" />
+            <state vertical-scroll-proportion="1.2903225">
+              <caret line="180" column="0" selection-start-line="180" selection-start-column="0" selection-end-line="180" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2392#2413#0" expanded="true" />
+                <element signature="e#2415#2436#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -103,8 +101,8 @@
         <option value="$PROJECT_DIR$/src/test/java/unittests/controller_tests/ProfilesRegistrationManager_Tests.java" />
         <option value="$PROJECT_DIR$/src/test/java/unittests/core_tests/ProfilesRegistrationManager_Tests.java" />
         <option value="$PROJECT_DIR$/src/test/java/unittests/core_tests/ProfilesInformationProvider_ByProfileUuid_Tests.java" />
-        <option value="$PROJECT_DIR$/src/test/java/unittests/core_tests/ProfilesInformationProvider_ByUserNameEmail_Tests.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/tjazi/profiles/service/core/ProfilesInformationProviderImpl.java" />
+        <option value="$PROJECT_DIR$/src/test/java/unittests/core_tests/ProfilesInformationProvider_ByUserNameEmail_Tests.java" />
       </list>
     </option>
   </component>
@@ -655,33 +653,7 @@
       <recent name="com.tjazi.profiles.service.core" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ProfilesInformationProvider_ByUserNameEmail_Tests.getProfileDetailsByUserNameEmail_ExceptionOnDaoLayer_Test">
-    <configuration default="false" name="ProfilesInformationProvider_ByUserNameEmail_Tests.getProfileDetailsByUserNameEmail_ExceptionOnNullRequest_Test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="unittests.core_tests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="profiles-core" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="unittests.core_tests" />
-      <option name="MAIN_CLASS_NAME" value="unittests.core_tests.ProfilesInformationProvider_ByUserNameEmail_Tests" />
-      <option name="METHOD_NAME" value="getProfileDetailsByUserNameEmail_ExceptionOnNullRequest_Test" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
+  <component name="RunManager" selected="JUnit.ProfilesInformationProvider_ByUserNameEmail_Tests.getProfileDetailsByUserNameEmail_ProfileDataReturned_Test">
     <configuration default="false" name="ProfilesInformationProvider_ByUserNameEmail_Tests.getProfileDetailsByUserNameEmail_NoProfileData_Test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -773,6 +745,32 @@
       <option name="PACKAGE_NAME" value="unittests.core_tests" />
       <option name="MAIN_CLASS_NAME" value="unittests.core_tests.ProfilesInformationProvider_ByUserNameEmail_Tests" />
       <option name="METHOD_NAME" value="getProfileDetailsByUserNameEmail_ExceptionOnDaoLayer_Test" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="ProfilesInformationProvider_ByUserNameEmail_Tests.getProfileDetailsByUserNameEmail_ProfileDataReturned_Test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="unittests.core_tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="profiles-core" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="unittests.core_tests" />
+      <option name="MAIN_CLASS_NAME" value="unittests.core_tests.ProfilesInformationProvider_ByUserNameEmail_Tests" />
+      <option name="METHOD_NAME" value="getProfileDetailsByUserNameEmail_ProfileDataReturned_Test" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -1242,19 +1240,19 @@
     </configuration>
     <list size="6">
       <item index="0" class="java.lang.String" itemvalue="JUnit.Run all unit testscases" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.ProfilesInformationProvider_ByUserNameEmail_Tests.getProfileDetailsByUserNameEmail_ExceptionOnNullRequest_Test" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.ProfilesInformationProvider_ByUserNameEmail_Tests.getProfileDetailsByUserNameEmail_NoProfileData_Test" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.ProfilesInformationProvider_ByUserNameEmail_Tests.getProfileDetailsByUserNameEmail_ExceptionOnNullUserNameEmail_Test" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.ProfilesInformationProvider_ByUserNameEmail_Tests.getProfileDetailsByUserNameEmail_MoreThan1RecordFound_Test" />
-      <item index="5" class="java.lang.String" itemvalue="JUnit.ProfilesInformationProvider_ByUserNameEmail_Tests.getProfileDetailsByUserNameEmail_ExceptionOnDaoLayer_Test" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.ProfilesInformationProvider_ByUserNameEmail_Tests.getProfileDetailsByUserNameEmail_NoProfileData_Test" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.ProfilesInformationProvider_ByUserNameEmail_Tests.getProfileDetailsByUserNameEmail_ExceptionOnNullUserNameEmail_Test" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.ProfilesInformationProvider_ByUserNameEmail_Tests.getProfileDetailsByUserNameEmail_MoreThan1RecordFound_Test" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.ProfilesInformationProvider_ByUserNameEmail_Tests.getProfileDetailsByUserNameEmail_ExceptionOnDaoLayer_Test" />
+      <item index="5" class="java.lang.String" itemvalue="JUnit.ProfilesInformationProvider_ByUserNameEmail_Tests.getProfileDetailsByUserNameEmail_ProfileDataReturned_Test" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.ProfilesInformationProvider_ByUserNameEmail_Tests.getProfileDetailsByUserNameEmail_ExceptionOnDaoLayer_Test" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.ProfilesInformationProvider_ByUserNameEmail_Tests.getProfileDetailsByUserNameEmail_MoreThan1RecordFound_Test" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.ProfilesInformationProvider_ByUserNameEmail_Tests.getProfileDetailsByUserNameEmail_NoProfileData_Test" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.ProfilesInformationProvider_ByUserNameEmail_Tests.getProfileDetailsByUserNameEmail_ExceptionOnNullUserNameEmail_Test" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.ProfilesInformationProvider_ByUserNameEmail_Tests.getProfileDetailsByUserNameEmail_ExceptionOnNullRequest_Test" />
+        <item index="0" class="java.lang.String" itemvalue="JUnit.ProfilesInformationProvider_ByUserNameEmail_Tests.getProfileDetailsByUserNameEmail_ProfileDataReturned_Test" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.ProfilesInformationProvider_ByUserNameEmail_Tests.getProfileDetailsByUserNameEmail_ExceptionOnDaoLayer_Test" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.ProfilesInformationProvider_ByUserNameEmail_Tests.getProfileDetailsByUserNameEmail_MoreThan1RecordFound_Test" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.ProfilesInformationProvider_ByUserNameEmail_Tests.getProfileDetailsByUserNameEmail_NoProfileData_Test" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.ProfilesInformationProvider_ByUserNameEmail_Tests.getProfileDetailsByUserNameEmail_ExceptionOnNullUserNameEmail_Test" />
       </list>
     </recent_temporary>
   </component>
@@ -1285,7 +1283,7 @@
       <workItem from="1446634238266" duration="2462000" />
       <workItem from="1446643903205" duration="2063000" />
       <workItem from="1446995937185" duration="801000" />
-      <workItem from="1447007961463" duration="3524000" />
+      <workItem from="1447007961463" duration="4644000" />
     </task>
     <servers />
   </component>
@@ -1296,43 +1294,43 @@
     <history-entry file="ProfilesInformationProvider_ByUserNameEmail_Tests_getProfileDetailsByUserNameEmail_ExceptionOnDaoLayer_Test - 2015.11.09 at 06h 11m 38s.xml">
       <configuration name="ProfilesInformationProvider_ByUserNameEmail_Tests.getProfileDetailsByUserNameEmail_ExceptionOnDaoLayer_Test" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ProfilesInformationProvider_ByUserNameEmail_Tests_getProfileDetailsByUserNameEmail_ExceptionOnNullUserNameEmail_Test - 2015.11.09 at 05h 51m 34s.xml">
-      <configuration name="ProfilesInformationProvider_ByUserNameEmail_Tests.getProfileDetailsByUserNameEmail_ExceptionOnNullUserNameEmail_Test" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ProfilesInformationProvider_ByUserNameEmail_Tests_getProfileDetailsByUserNameEmail_ExceptionOnNullUserNameEmail_Test - 2015.11.09 at 05h 52m 53s.xml">
-      <configuration name="ProfilesInformationProvider_ByUserNameEmail_Tests.getProfileDetailsByUserNameEmail_ExceptionOnNullUserNameEmail_Test" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="ProfilesInformationProvider_ByUserNameEmail_Tests_getProfileDetailsByUserNameEmail_MoreThan1RecordFound_Test - 2015.11.09 at 05h 58m 27s.xml">
       <configuration name="ProfilesInformationProvider_ByUserNameEmail_Tests.getProfileDetailsByUserNameEmail_MoreThan1RecordFound_Test" configurationId="JUnit" />
     </history-entry>
     <history-entry file="ProfilesInformationProvider_ByUserNameEmail_Tests_getProfileDetailsByUserNameEmail_MoreThan1RecordFound_Test - 2015.11.09 at 06h 05m 14s.xml">
       <configuration name="ProfilesInformationProvider_ByUserNameEmail_Tests.getProfileDetailsByUserNameEmail_MoreThan1RecordFound_Test" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ProfilesInformationProvider_ByUserNameEmail_Tests_getProfileDetailsByUserNameEmail_NoProfileData_Test - 2015.11.09 at 05h 49m 17s.xml">
-      <configuration name="ProfilesInformationProvider_ByUserNameEmail_Tests.getProfileDetailsByUserNameEmail_NoProfileData_Test" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ProfilesInformationProvider_ByUserNameEmail_Tests_getProfileDetailsByUserNameEmail_NoProfileData_Test - 2015.11.09 at 05h 49m 32s.xml">
-      <configuration name="ProfilesInformationProvider_ByUserNameEmail_Tests.getProfileDetailsByUserNameEmail_NoProfileData_Test" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ProfilesInformationProvider_ByUserNameEmail_Tests_getProfileDetailsByUserNameEmail_NoProfileData_Test - 2015.11.09 at 05h 53m 06s.xml">
-      <configuration name="ProfilesInformationProvider_ByUserNameEmail_Tests.getProfileDetailsByUserNameEmail_NoProfileData_Test" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="ProfilesInformationProvider_ByUserNameEmail_Tests_getProfileDetailsByUserNameEmail_NoProfileData_Test - 2015.11.09 at 05h 55m 48s.xml">
       <configuration name="ProfilesInformationProvider_ByUserNameEmail_Tests.getProfileDetailsByUserNameEmail_NoProfileData_Test" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="ProfilesInformationProvider_ByUserNameEmail_Tests_getProfileDetailsByUserNameEmail_ProfileDataReturned_Test - 2015.11.09 at 08h 26m 49s.xml">
+      <configuration name="ProfilesInformationProvider_ByUserNameEmail_Tests.getProfileDetailsByUserNameEmail_ProfileDataReturned_Test" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ProfilesInformationProvider_ByUserNameEmail_Tests_getProfileDetailsByUserNameEmail_ProfileDataReturned_Test - 2015.11.09 at 08h 28m 43s.xml">
+      <configuration name="ProfilesInformationProvider_ByUserNameEmail_Tests.getProfileDetailsByUserNameEmail_ProfileDataReturned_Test" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ProfilesInformationProvider_ByUserNameEmail_Tests_getProfileDetailsByUserNameEmail_ProfileDataReturned_Test - 2015.11.09 at 08h 31m 08s.xml">
+      <configuration name="ProfilesInformationProvider_ByUserNameEmail_Tests.getProfileDetailsByUserNameEmail_ProfileDataReturned_Test" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ProfilesInformationProvider_ByUserNameEmail_Tests_getProfileDetailsByUserNameEmail_ProfileDataReturned_Test - 2015.11.09 at 08h 31m 27s.xml">
+      <configuration name="ProfilesInformationProvider_ByUserNameEmail_Tests.getProfileDetailsByUserNameEmail_ProfileDataReturned_Test" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ProfilesInformationProvider_ByUserNameEmail_Tests_getProfileDetailsByUserNameEmail_ProfileDataReturned_Test - 2015.11.09 at 08h 32m 14s.xml">
+      <configuration name="ProfilesInformationProvider_ByUserNameEmail_Tests.getProfileDetailsByUserNameEmail_ProfileDataReturned_Test" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="37258000" />
+    <option name="totallyTimeSpent" value="38378000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="825" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3287858" sideWeight="0.49713877" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32789117" sideWeight="0.42703864" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32742155" sideWeight="0.42703864" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.38062757" sideWeight="0.65665233" order="2" side_tool="false" content_ui="tabs" />
@@ -1738,30 +1736,30 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/unittests/core_tests/ProfilesInformationProvider_ByProfileUuid_Tests.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.6197183">
-          <caret line="63" column="4" selection-start-line="63" selection-start-column="4" selection-end-line="63" selection-end-column="4" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/unittests/core_tests/ProfilesInformationProvider_ByUserNameEmail_Tests.java">
-      <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="112" column="67" selection-start-line="112" selection-start-column="67" selection-end-line="112" selection-end-column="67" />
+          <caret line="46" column="4" selection-start-line="46" selection-start-column="4" selection-end-line="46" selection-end-column="4" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2392#2413#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/tjazi/profiles/service/core/ProfilesInformationProviderImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.41935483">
-          <caret line="122" column="13" selection-start-line="122" selection-start-column="13" selection-end-line="122" selection-end-column="13" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="127" column="95" selection-start-line="127" selection-start-column="95" selection-end-line="127" selection-end-column="95" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/unittests/core_tests/ProfilesInformationProvider_ByUserNameEmail_Tests.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.2903225">
+          <caret line="180" column="0" selection-start-line="180" selection-start-column="0" selection-end-line="180" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2415#2436#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

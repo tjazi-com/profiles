@@ -18,6 +18,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 import javax.print.DocFlavor;
 
 import java.util.Collections;
+import java.util.UUID;
 
 import static org.mockito.Mockito.*;
 import static org.junit.Assert.*;
@@ -137,4 +138,44 @@ public class ProfilesInformationProvider_ByUserNameEmail_Tests {
         assertEquals(null, responseMessage.getSurname());
     }
 
+    @Test
+    public void getProfileDetailsByUserNameEmail_ProfileDataReturned_Test() {
+
+        final UUID profileUuid = UUID.randomUUID();
+        final String userNameEmail = "sample@email.com";
+        final String userName = "sample user name 1";
+        final String userEmail = "sample@email.com";
+        final String name = "sample name";
+        final String surname = "sample surname";
+
+        final GetProfileDetailsByUserNameEmailResponseStatus expectedStatus =
+                GetProfileDetailsByUserNameEmailResponseStatus.OK;
+
+        GetProfileDetailsByUserNameEmailRequestMessage requestMessage = new GetProfileDetailsByUserNameEmailRequestMessage();
+        requestMessage.setUserNameEmail(userNameEmail);
+
+        ProfileDataDAOModel daoModelToReturn = new ProfileDataDAOModel();
+        daoModelToReturn.setProfileUuid(profileUuid);
+        daoModelToReturn.setName(name);
+        daoModelToReturn.setSurname(surname);
+        daoModelToReturn.setUserName(userName);
+        daoModelToReturn.setUserEmail(userEmail);
+
+        when(profileDAO.findByUserNameOrEmail(userNameEmail, userNameEmail))
+                .thenReturn(Collections.singletonList(daoModelToReturn));
+
+        // main call
+        GetProfileDetailsByUserNameEmailResponseMessage responseMessage =
+                profilesInformationProvider.getProfileDetailsByUserNameEmail(requestMessage);
+
+        // verification and assertion
+        verify(profileDAO, times(1)).findByUserNameOrEmail(userNameEmail,userNameEmail);
+
+        assertEquals(expectedStatus, responseMessage.getResponseStatus());
+        assertEquals(userName, responseMessage.getUserName());
+        assertEquals(userEmail, responseMessage.getUserEmail());
+        assertEquals(name, responseMessage.getName());
+        assertEquals(profileUuid, responseMessage.getProfileUuid());
+        assertEquals(surname, responseMessage.getSurname());
+    }
 }

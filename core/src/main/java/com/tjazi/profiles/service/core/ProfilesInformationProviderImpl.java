@@ -121,6 +121,19 @@ public class ProfilesInformationProviderImpl implements ProfilesInformationProvi
                 responseMessage.setResponseStatus(GetProfileDetailsByUserNameEmailResponseStatus.GENERAL_ERROR);
                 return responseMessage;
             }
+
+            //all went fine so far - fill the result and return it
+            ProfileDataDAOModel singleRecordReturned = foundProfiles.get(0);
+
+            responseMessage.setResponseStatus(GetProfileDetailsByUserNameEmailResponseStatus.OK);
+            responseMessage.setProfileUuid(singleRecordReturned.getProfileUuid());
+            responseMessage.setUserName(singleRecordReturned.getUserName());
+            responseMessage.setUserEmail(singleRecordReturned.getUserEmail());
+            responseMessage.setName(singleRecordReturned.getName());
+            responseMessage.setSurname(singleRecordReturned.getSurname());
+
+            return responseMessage;
+
         } catch (Exception ex) {
             String errorMessage = "There was an exception when calling profileDAO.findByUserNameOrEmail();" +
                                 "user name / email: " + userNameEmail + "; exception: " + ex.toString();
@@ -130,7 +143,5 @@ public class ProfilesInformationProviderImpl implements ProfilesInformationProvi
             responseMessage.setResponseStatus(GetProfileDetailsByUserNameEmailResponseStatus.GENERAL_ERROR);
             return responseMessage;
         }
-
-        return null;
     }
 }
