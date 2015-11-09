@@ -2,8 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="16df5779-9d3f-4da0-a554-5aef2d1d8aa3" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../core/src/main/java/com/tjazi/profiles/service/core/ProfilesInformationProvider.java" afterPath="$PROJECT_DIR$/../core/src/main/java/com/tjazi/profiles/service/core/ProfilesInformationProvider.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../core/src/test/java/unittests/core_tests/ProfilesInformationProvider_ByUserNameEmail_Tests.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../core/src/test/java/unittests/core_tests/ProfilesRegistrationManager_Tests.java" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../core/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../core/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../core/src/main/java/com/tjazi/profiles/service/core/ProfilesInformationProviderImpl.java" afterPath="$PROJECT_DIR$/../core/src/main/java/com/tjazi/profiles/service/core/ProfilesInformationProviderImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../core/src/test/java/unittests/core_tests/ProfilesInformationProvider_ByProfileUuid_Tests.java" afterPath="$PROJECT_DIR$/../core/src/test/java/unittests/core_tests/ProfilesInformationProvider_ByProfileUuid_Tests.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="profiles-messages.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -100,8 +104,8 @@
       <file leaf-file-name="GetProfileDetailsByUserNameEmailRequestMessage.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/tjazi/profiles/messages/GetProfileDetailsByUserNameEmailRequestMessage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.80818963">
-              <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.7758621">
+              <caret line="24" column="1" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
               <folding>
                 <element signature="e#556#557#0" expanded="true" />
                 <element signature="e#592#593#0" expanded="true" />
@@ -632,12 +636,12 @@
       <workItem from="1444462262067" duration="1055000" />
       <workItem from="1445754935099" duration="807000" />
       <workItem from="1446020768275" duration="1897000" />
-      <workItem from="1446994583400" duration="1675000" />
+      <workItem from="1446994583400" duration="3094000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="5434000" />
+    <option name="totallyTimeSpent" value="6853000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="825" extended-state="0" />
@@ -1024,8 +1028,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/tjazi/profiles/messages/GetProfileDetailsByUserNameEmailRequestMessage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.80818963">
-          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.7758621">
+          <caret line="24" column="1" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
           <folding>
             <element signature="e#556#557#0" expanded="true" />
             <element signature="e#592#593#0" expanded="true" />

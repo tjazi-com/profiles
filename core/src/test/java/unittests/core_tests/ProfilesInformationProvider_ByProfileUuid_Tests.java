@@ -44,7 +44,7 @@ public class ProfilesInformationProvider_ByProfileUuid_Tests {
     }
 
     @Test
-         public void getProfileDetails_ExtractDataFromDaoSuccess_Test() {
+    public void getProfileDetails_ExtractDataFromDaoSuccess_Test() {
 
         final UUID profileUuid = UUID.randomUUID();
         final String userName = "sample user name 1";

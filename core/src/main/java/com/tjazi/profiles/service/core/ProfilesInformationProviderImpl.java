@@ -80,6 +80,57 @@ public class ProfilesInformationProviderImpl implements ProfilesInformationProvi
     @Override
     public GetProfileDetailsByUserNameEmailResponseMessage getProfileDetailsByUserNameEmail(
             GetProfileDetailsByUserNameEmailRequestMessage requestMessage) {
+
+        if (requestMessage == null) {
+            String errorMessage = "requestMessage is null";
+
+            log.error(errorMessage);
+            throw new IllegalArgumentException(errorMessage);
+        }
+
+        String userNameEmail = requestMessage.getUserNameEmail();
+
+        if (userNameEmail == null || userNameEmail.isEmpty()) {
+            String errorMessage = "requestMessage.UserNameEmail is null or empty";
+
+            log.error(errorMessage);
+            throw new IllegalArgumentException(errorMessage);
+        }
+
+        GetProfileDetailsByUserNameEmailResponseMessage responseMessage =
+                new GetProfileDetailsByUserNameEmailResponseMessage();
+
+        try {
+            // find the user profile by name / email
+
+            List<ProfileDataDAOModel> foundProfiles = profileDAO.findByUserNameOrEmail(userNameEmail, userNameEmail);
+
+            if (foundProfiles == null || foundProfiles.isEmpty()) {
+                responseMessage.setResponseStatus(GetProfileDetailsByUserNameEmailResponseStatus.PROFILE_NOT_FOUND);
+                return responseMessage;
+            }
+
+            int numberOfRecordsFound = foundProfiles.size();
+
+            // this case shouldn't really happen, but we need to be sure we're controlling the flow
+            if (numberOfRecordsFound > 1) {
+                String errorMessage = "Found more that 1 profileDAO for user name / email: " + userNameEmail +
+                        "; number of elements found: " + numberOfRecordsFound;
+
+                log.error(errorMessage);
+                responseMessage.setResponseStatus(GetProfileDetailsByUserNameEmailResponseStatus.GENERAL_ERROR);
+                return responseMessage;
+            }
+        } catch (Exception ex) {
+            String errorMessage = "There was an exception when calling profileDAO.findByUserNameOrEmail();" +
+                                "user name / email: " + userNameEmail + "; exception: " + ex.toString();
+
+            log.error(errorMessage);
+
+            responseMessage.setResponseStatus(GetProfileDetailsByUserNameEmailResponseStatus.GENERAL_ERROR);
+            return responseMessage;
+        }
+
         return null;
     }
 }
