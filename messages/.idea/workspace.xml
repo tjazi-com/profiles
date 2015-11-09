@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="16df5779-9d3f-4da0-a554-5aef2d1d8aa3" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../client/src/main/java/com/tjazi/profiles/client/ProfilesClient.java" afterPath="$PROJECT_DIR$/../client/src/main/java/com/tjazi/profiles/client/ProfilesClient.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../client/src/main/java/com/tjazi/profiles/client/ProfilesClientImpl.java" afterPath="$PROJECT_DIR$/../client/src/main/java/com/tjazi/profiles/client/ProfilesClientImpl.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../core/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../core/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../core/src/main/java/com/tjazi/profiles/service/core/ProfilesInformationProviderImpl.java" afterPath="$PROJECT_DIR$/../core/src/main/java/com/tjazi/profiles/service/core/ProfilesInformationProviderImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../core/src/test/java/unittests/core_tests/ProfilesInformationProvider_ByUserNameEmail_Tests.java" afterPath="$PROJECT_DIR$/../core/src/test/java/unittests/core_tests/ProfilesInformationProvider_ByUserNameEmail_Tests.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="profiles-messages.iws" />
@@ -342,7 +342,7 @@
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../core" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../client" />
   </component>
   <component name="RunManager">
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
@@ -634,16 +634,16 @@
       <workItem from="1444462262067" duration="1055000" />
       <workItem from="1445754935099" duration="807000" />
       <workItem from="1446020768275" duration="1897000" />
-      <workItem from="1446994583400" duration="3496000" />
+      <workItem from="1446994583400" duration="4063000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7255000" />
+    <option name="totallyTimeSpent" value="7822000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="825" extended-state="0" />
-    <editor active="false" />
+    <frame x="0" y="23" width="1440" height="825" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />

@@ -1,10 +1,7 @@
 package com.tjazi.profiles.client;
 
 import com.tjazi.lib.messaging.rest.RestClient;
-import com.tjazi.profiles.messages.GetProfileDetailsRequestMessage;
-import com.tjazi.profiles.messages.GetProfileDetailsResponseMessage;
-import com.tjazi.profiles.messages.RegisterNewProfileRequestMessage;
-import com.tjazi.profiles.messages.RegisterNewProfileResponseMessage;
+import com.tjazi.profiles.messages.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -73,5 +70,22 @@ public class ProfilesClientImpl implements ProfilesClient {
         Object response = restClient.sendRequestGetResponse(requestMessage, GetProfileDetailsResponseMessage.class);
 
         return (GetProfileDetailsResponseMessage) response;
+    }
+
+    @Override
+    public GetProfileDetailsByUserNameEmailResponseMessage getProfileDetailsByUserNamePassword(String userNamePassword) {
+
+        if (userNamePassword == null || userNamePassword.isEmpty()) {
+            String errorMessage = "userNamePassword is null or empty";
+
+            log.error(errorMessage);
+            throw new IllegalArgumentException(errorMessage);
+        }
+
+        GetProfileDetailsByUserNameEmailRequestMessage requestMessage = new GetProfileDetailsByUserNameEmailRequestMessage();
+        requestMessage.setUserNameEmail(userNamePassword);
+
+        return (GetProfileDetailsByUserNameEmailResponseMessage) restClient.sendRequestGetResponse(
+                requestMessage, GetProfileDetailsByUserNameEmailResponseMessage.class);
     }
 }
