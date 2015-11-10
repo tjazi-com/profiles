@@ -73,17 +73,17 @@ public class ProfilesClientImpl implements ProfilesClient {
     }
 
     @Override
-    public GetProfileDetailsByUserNameEmailResponseMessage getProfileDetailsByUserNamePassword(String userNamePassword) {
+    public GetProfileDetailsByUserNameEmailResponseMessage getProfileDetailsByUserNameEmail(String userNameEmail) {
 
-        if (userNamePassword == null || userNamePassword.isEmpty()) {
-            String errorMessage = "userNamePassword is null or empty";
+        if (userNameEmail == null || userNameEmail.isEmpty()) {
+            String errorMessage = "userNameEmail is null or empty";
 
             log.error(errorMessage);
             throw new IllegalArgumentException(errorMessage);
         }
 
         GetProfileDetailsByUserNameEmailRequestMessage requestMessage = new GetProfileDetailsByUserNameEmailRequestMessage();
-        requestMessage.setUserNameEmail(userNamePassword);
+        requestMessage.setUserNameEmail(userNameEmail);
 
         return (GetProfileDetailsByUserNameEmailResponseMessage) restClient.sendRequestGetResponse(
                 requestMessage, GetProfileDetailsByUserNameEmailResponseMessage.class);

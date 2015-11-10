@@ -15,5 +15,5 @@ public interface ProfilesClient {
 
     RegisterNewProfileResponseMessage registerNewProfile(String userName, String email, String name, String surname);
     GetProfileDetailsResponseMessage getProfileDetails(UUID profileUuid);
-    GetProfileDetailsByUserNameEmailResponseMessage getProfileDetailsByUserNamePassword(String userNamePassword);
+    GetProfileDetailsByUserNameEmailResponseMessage getProfileDetailsByUserNameEmail(String userNameEmail);
 }
