@@ -84,7 +84,7 @@ public class ProfilesRegistrationManagerImpl implements ProfilesRegistrationMana
 
         log.debug("Checking for duplicated profile data in database. User name: '{}', email: '{}'.", userName, email);
 
-        List<ProfileDataDAOModel> daoRecordsByUserNameOrEmail = profileDAO.findByUserNameOrEmail(userName, email);
+        List<ProfileDataDAOModel> daoRecordsByUserNameOrEmail = profileDAO.findByUserNameOrUserEmail(userName, email);
 
         if (daoRecordsByUserNameOrEmail != null && daoRecordsByUserNameOrEmail.size() > 0) {
             if (daoRecordsByUserNameOrEmail.get(0).getUserEmail().equalsIgnoreCase(email)) {

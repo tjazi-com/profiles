@@ -103,7 +103,7 @@ public class ProfilesInformationProviderImpl implements ProfilesInformationProvi
         try {
             // find the user profile by name / email
 
-            List<ProfileDataDAOModel> foundProfiles = profileDAO.findByUserNameOrEmail(userNameEmail, userNameEmail);
+            List<ProfileDataDAOModel> foundProfiles = profileDAO.findByUserNameOrUserEmail(userNameEmail, userNameEmail);
 
             if (foundProfiles == null || foundProfiles.isEmpty()) {
                 responseMessage.setResponseStatus(GetProfileDetailsByUserNameEmailResponseStatus.PROFILE_NOT_FOUND);

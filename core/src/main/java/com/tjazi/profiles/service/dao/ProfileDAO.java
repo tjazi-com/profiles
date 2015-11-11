@@ -19,7 +19,7 @@ public interface ProfileDAO extends CrudRepository<ProfileDataDAOModel, Long> {
      * @param email User email
      * @return
      */
-    List<ProfileDataDAOModel> findByUserNameOrEmail(String userName, String email);
+    List<ProfileDataDAOModel> findByUserNameOrUserEmail(String userName, String email);
 
     /**
      * Find user profile by its UUID

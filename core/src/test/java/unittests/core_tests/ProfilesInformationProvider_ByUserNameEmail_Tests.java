@@ -64,7 +64,7 @@ public class ProfilesInformationProvider_ByUserNameEmail_Tests {
         GetProfileDetailsByUserNameEmailRequestMessage requestMessage = new GetProfileDetailsByUserNameEmailRequestMessage();
         requestMessage.setUserNameEmail(userNameEmail);
 
-        when(profileDAO.findByUserNameOrEmail(userNameEmail, userNameEmail))
+        when(profileDAO.findByUserNameOrUserEmail(userNameEmail, userNameEmail))
                 .thenReturn(Collections.<ProfileDataDAOModel>emptyList());
 
         // main call
@@ -72,7 +72,7 @@ public class ProfilesInformationProvider_ByUserNameEmail_Tests {
                 profilesInformationProvider.getProfileDetailsByUserNameEmail(requestMessage);
 
         // verification and assertion
-        verify(profileDAO, times(1)).findByUserNameOrEmail(userNameEmail,userNameEmail);
+        verify(profileDAO, times(1)).findByUserNameOrUserEmail(userNameEmail,userNameEmail);
 
         assertEquals(expectedStatus, responseMessage.getResponseStatus());
         assertEquals(null, responseMessage.getUserName());
@@ -92,7 +92,7 @@ public class ProfilesInformationProvider_ByUserNameEmail_Tests {
         GetProfileDetailsByUserNameEmailRequestMessage requestMessage = new GetProfileDetailsByUserNameEmailRequestMessage();
         requestMessage.setUserNameEmail(userNameEmail);
 
-        when(profileDAO.findByUserNameOrEmail(userNameEmail, userNameEmail))
+        when(profileDAO.findByUserNameOrUserEmail(userNameEmail, userNameEmail))
                 .thenReturn(Collections.nCopies(2, new ProfileDataDAOModel()));
 
         // main call
@@ -100,7 +100,7 @@ public class ProfilesInformationProvider_ByUserNameEmail_Tests {
                 profilesInformationProvider.getProfileDetailsByUserNameEmail(requestMessage);
 
         // verification and assertion
-        verify(profileDAO, times(1)).findByUserNameOrEmail(userNameEmail,userNameEmail);
+        verify(profileDAO, times(1)).findByUserNameOrUserEmail(userNameEmail,userNameEmail);
 
         assertEquals(expectedStatus, responseMessage.getResponseStatus());
         assertEquals(null, responseMessage.getUserName());
@@ -120,7 +120,7 @@ public class ProfilesInformationProvider_ByUserNameEmail_Tests {
         GetProfileDetailsByUserNameEmailRequestMessage requestMessage = new GetProfileDetailsByUserNameEmailRequestMessage();
         requestMessage.setUserNameEmail(userNameEmail);
 
-        when(profileDAO.findByUserNameOrEmail(userNameEmail, userNameEmail))
+        when(profileDAO.findByUserNameOrUserEmail(userNameEmail, userNameEmail))
                 .thenThrow(Exception.class);
 
         // main call
@@ -128,7 +128,7 @@ public class ProfilesInformationProvider_ByUserNameEmail_Tests {
                 profilesInformationProvider.getProfileDetailsByUserNameEmail(requestMessage);
 
         // verification and assertion
-        verify(profileDAO, times(1)).findByUserNameOrEmail(userNameEmail,userNameEmail);
+        verify(profileDAO, times(1)).findByUserNameOrUserEmail(userNameEmail,userNameEmail);
 
         assertEquals(expectedStatus, responseMessage.getResponseStatus());
         assertEquals(null, responseMessage.getUserName());
@@ -161,7 +161,7 @@ public class ProfilesInformationProvider_ByUserNameEmail_Tests {
         daoModelToReturn.setUserName(userName);
         daoModelToReturn.setUserEmail(userEmail);
 
-        when(profileDAO.findByUserNameOrEmail(userNameEmail, userNameEmail))
+        when(profileDAO.findByUserNameOrUserEmail(userNameEmail, userNameEmail))
                 .thenReturn(Collections.singletonList(daoModelToReturn));
 
         // main call
@@ -169,7 +169,7 @@ public class ProfilesInformationProvider_ByUserNameEmail_Tests {
                 profilesInformationProvider.getProfileDetailsByUserNameEmail(requestMessage);
 
         // verification and assertion
-        verify(profileDAO, times(1)).findByUserNameOrEmail(userNameEmail,userNameEmail);
+        verify(profileDAO, times(1)).findByUserNameOrUserEmail(userNameEmail,userNameEmail);
 
         assertEquals(expectedStatus, responseMessage.getResponseStatus());
         assertEquals(userName, responseMessage.getUserName());
