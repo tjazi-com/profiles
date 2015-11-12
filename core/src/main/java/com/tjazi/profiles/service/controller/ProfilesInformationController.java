@@ -23,7 +23,7 @@ public class ProfilesInformationController {
     @Autowired
     private ProfilesInformationProvider profilesInformationProvider;
 
-    @RequestMapping(value = "/info", method = RequestMethod.POST)
+    @RequestMapping(value = "/profiledetails", method = RequestMethod.POST)
     public GetProfileDetailsResponseMessage getProfileDetails(
             GetProfileDetailsRequestMessage getProfileDetailsRequestMessage) {
 

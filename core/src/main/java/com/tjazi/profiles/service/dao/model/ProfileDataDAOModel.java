@@ -25,10 +25,10 @@ public class ProfileDataDAOModel {
     @Column(name = "UserEmail", unique = true, nullable = false)
     private String userEmail;
 
-    @Column(name = "Name", unique = false, nullable = false)
+    @Column(name = "Name", unique = false, nullable = true)
     private String name;
 
-    @Column(name = "Surname", unique = false, nullable = false)
+    @Column(name = "Surname", unique = false, nullable = true)
     private String surname;
 
     public long getId() {

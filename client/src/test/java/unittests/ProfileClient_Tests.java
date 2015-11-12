@@ -26,6 +26,9 @@ import static org.mockito.Mockito.*;
 @RunWith(MockitoJUnitRunner.class)
 public class ProfileClient_Tests {
 
+    private final static String urlProfilesRegisterProfile = "/profiles/registerprofile";
+    private final static String urlProfilesProfileDetails = "/profiles/profiledetails";
+
     @Rule
     public ExpectedException thrown = ExpectedException.none();
 
@@ -59,14 +62,17 @@ public class ProfileClient_Tests {
 
         ProfilesClientImpl profilesClient = createProfilesClient();
 
-        when(restClient.sendRequestGetResponse(anyObject(), eq(GetProfileDetailsResponseMessage.class)))
+        when(restClient.sendRequestGetResponse(
+                anyString(), anyObject(), eq(GetProfileDetailsResponseMessage.class)))
                 .thenReturn(responseMessage);
 
         // main call
         GetProfileDetailsResponseMessage profileDetailsActual = profilesClient.getProfileDetails(targetProfileUuid);
 
         // verify calls
-        verify(restClient, times(1)).sendRequestGetResponse(requestMessageArgumentCaptor.capture(),
+        verify(restClient, times(1)).sendRequestGetResponse(
+                eq(urlProfilesProfileDetails),
+                requestMessageArgumentCaptor.capture(),
                 eq(GetProfileDetailsResponseMessage.class));
 
         assertEquals(targetProfileUuid, requestMessageArgumentCaptor.getValue().getProfileUuid());
@@ -115,7 +121,7 @@ public class ProfileClient_Tests {
         responseMessage.setNewProfileUuid(newProfileUuid);
         responseMessage.setRegisterNewProfileResponseStatus(profileResponseStatus);
 
-        when(restClient.sendRequestGetResponse(anyObject(), eq(RegisterNewProfileResponseMessage.class)))
+        when(restClient.sendRequestGetResponse(anyString(), anyObject(), eq(RegisterNewProfileResponseMessage.class)))
                 .thenReturn(responseMessage);
 
         // call the tested method
@@ -128,7 +134,8 @@ public class ProfileClient_Tests {
 
         ArgumentCaptor<RegisterNewProfileRequestMessage> messageCaptor = ArgumentCaptor.forClass(RegisterNewProfileRequestMessage.class);
 
-        verify(restClient, times(1)).sendRequestGetResponse(messageCaptor.capture(), eq(RegisterNewProfileResponseMessage.class));
+        verify(restClient, times(1)).sendRequestGetResponse(
+                eq(urlProfilesRegisterProfile), messageCaptor.capture(), eq(RegisterNewProfileResponseMessage.class));
 
         assertEquals(userName, messageCaptor.getValue().getUserName());
         assertEquals(userEmail, messageCaptor.getValue().getEmail());

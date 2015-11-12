@@ -24,7 +24,7 @@ public class ProfilesRegistrationController {
     @Autowired
     private ProfilesRegistrationManager profilesRegistrationManager;
 
-    @RequestMapping(value = "/newprofile", method = RequestMethod.POST)
+    @RequestMapping(value = "/registerprofile", method = RequestMethod.POST)
     public RegisterNewProfileResponseMessage registerNewProfileRequestHandler(
             @RequestBody RegisterNewProfileRequestMessage requestMessage) {
 

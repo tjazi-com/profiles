@@ -16,6 +16,9 @@ public class ProfilesClientImpl implements ProfilesClient {
 
     private Logger log = LoggerFactory.getLogger(ProfilesClientImpl.class);
 
+    private final static String PROFILES_REGISTRATION_PATH = "/profiles/registerprofile";
+    private final static String PROFILES_DETAILS_PATH = "/profiles/profiledetails";
+
     public ProfilesClientImpl(RestClient restClient){
 
         if (restClient == null){
@@ -52,7 +55,8 @@ public class ProfilesClientImpl implements ProfilesClient {
         requestMessage.setName(name);
         requestMessage.setSurname(surname);
 
-        return (RegisterNewProfileResponseMessage) restClient.sendRequestGetResponse(requestMessage, RegisterNewProfileResponseMessage.class);
+        return (RegisterNewProfileResponseMessage)
+                restClient.sendRequestGetResponse(PROFILES_REGISTRATION_PATH, requestMessage, RegisterNewProfileResponseMessage.class);
     }
 
     public GetProfileDetailsResponseMessage getProfileDetails(UUID profileUuid)
@@ -67,7 +71,8 @@ public class ProfilesClientImpl implements ProfilesClient {
         GetProfileDetailsRequestMessage requestMessage = new GetProfileDetailsRequestMessage();
         requestMessage.setProfileUuid(profileUuid);
 
-        Object response = restClient.sendRequestGetResponse(requestMessage, GetProfileDetailsResponseMessage.class);
+        Object response = restClient.sendRequestGetResponse(
+                PROFILES_DETAILS_PATH, requestMessage, GetProfileDetailsResponseMessage.class);
 
         return (GetProfileDetailsResponseMessage) response;
     }
