@@ -10,5 +10,10 @@ public enum RegisterNewProfileResponseStatus {
     USER_EMAIL_ALREADY_REGISTERED_WITH_DIFFERENT_USER,
     GENERAL_REGISTRATION_ERROR,
 
+    /**
+     * Problem with connecting to the remote end-point via rest client
+     */
+    CONNECTIVITY_ERROR,
+
     UNKNOWN
 }
