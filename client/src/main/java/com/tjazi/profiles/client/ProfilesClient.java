@@ -3,7 +3,6 @@ package com.tjazi.profiles.client;
 import com.tjazi.profiles.messages.GetProfileDetailsByUserNameEmailResponseMessage;
 import com.tjazi.profiles.messages.GetProfileDetailsResponseMessage;
 import com.tjazi.profiles.messages.RegisterNewProfileResponseMessage;
-import org.springframework.stereotype.Service;
 
 import java.util.UUID;
 
