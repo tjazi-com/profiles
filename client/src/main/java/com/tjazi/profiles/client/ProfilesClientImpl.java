@@ -18,6 +18,7 @@ public class ProfilesClientImpl implements ProfilesClient {
 
     private final static String PROFILES_REGISTRATION_PATH = "/profiles/registerprofile";
     private final static String PROFILES_DETAILS_PATH = "/profiles/profiledetails";
+    private final static String PROFILES_DETAILS_USERNAME_EMAIL_PATH = "/profiles/profiledetails2";
 
     public ProfilesClientImpl(RestClient restClient){
 
@@ -91,6 +92,7 @@ public class ProfilesClientImpl implements ProfilesClient {
         requestMessage.setUserNameEmail(userNameEmail);
 
         return (GetProfileDetailsByUserNameEmailResponseMessage) restClient.sendRequestGetResponse(
+                PROFILES_DETAILS_USERNAME_EMAIL_PATH,
                 requestMessage, GetProfileDetailsByUserNameEmailResponseMessage.class);
     }
 }
