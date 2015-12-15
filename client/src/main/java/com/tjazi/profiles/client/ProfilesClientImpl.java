@@ -1,9 +1,10 @@
 package com.tjazi.profiles.client;
 
-import com.tjazi.lib.messaging.rest.RestClient;
 import com.tjazi.profiles.messages.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.UUID;
 
@@ -12,25 +13,16 @@ import java.util.UUID;
  */
 public class ProfilesClientImpl implements ProfilesClient {
 
-    private RestClient restClient;
+    @Autowired
+    private RestTemplate restTemplate;
 
     private Logger log = LoggerFactory.getLogger(ProfilesClientImpl.class);
 
-    private final static String PROFILES_REGISTRATION_PATH = "/profiles/registerprofile";
-    private final static String PROFILES_DETAILS_PATH = "/profiles/profiledetails";
-    private final static String PROFILES_DETAILS_USERNAME_EMAIL_PATH = "/profiles/profiledetails2";
+    private final static String PROFILES_SERVICE_NAME = "profiles-service";
 
-    public ProfilesClientImpl(RestClient restClient){
-
-        if (restClient == null){
-            String errorMessage = "restClient is null";
-
-            log.error(errorMessage);
-            throw new IllegalArgumentException(errorMessage);
-        }
-
-        this.restClient = restClient;
-    }
+    private final static String PROFILES_REGISTRATION_URL = "http://" + PROFILES_SERVICE_NAME + "/profiles/registerprofile";
+    private final static String PROFILES_DETAILS_URL = "http://" + PROFILES_SERVICE_NAME + "/profiles/profiledetails";
+    private final static String PROFILES_DETAILS_USERNAME_EMAIL_URL = "http://" + PROFILES_SERVICE_NAME + "/profiles/profiledetails2";
 
     public RegisterNewProfileResponseMessage registerNewProfile(
             String userName, String email, String name, String surname) {
@@ -56,8 +48,9 @@ public class ProfilesClientImpl implements ProfilesClient {
         requestMessage.setName(name);
         requestMessage.setSurname(surname);
 
-        return (RegisterNewProfileResponseMessage)
-                restClient.sendRequestGetResponse(PROFILES_REGISTRATION_PATH, requestMessage, RegisterNewProfileResponseMessage.class);
+        return restTemplate.postForObject(PROFILES_REGISTRATION_URL, requestMessage,
+                        RegisterNewProfileResponseMessage.class, (Object) null);
+
     }
 
     public GetProfileDetailsResponseMessage getProfileDetails(UUID profileUuid)
@@ -72,10 +65,8 @@ public class ProfilesClientImpl implements ProfilesClient {
         GetProfileDetailsRequestMessage requestMessage = new GetProfileDetailsRequestMessage();
         requestMessage.setProfileUuid(profileUuid);
 
-        Object response = restClient.sendRequestGetResponse(
-                PROFILES_DETAILS_PATH, requestMessage, GetProfileDetailsResponseMessage.class);
-
-        return (GetProfileDetailsResponseMessage) response;
+        return restTemplate.postForObject(PROFILES_DETAILS_URL, requestMessage,
+                GetProfileDetailsResponseMessage.class, (Object) null);
     }
 
     @Override
@@ -91,8 +82,7 @@ public class ProfilesClientImpl implements ProfilesClient {
         GetProfileDetailsByUserNameEmailRequestMessage requestMessage = new GetProfileDetailsByUserNameEmailRequestMessage();
         requestMessage.setUserNameEmail(userNameEmail);
 
-        return (GetProfileDetailsByUserNameEmailResponseMessage) restClient.sendRequestGetResponse(
-                PROFILES_DETAILS_USERNAME_EMAIL_PATH,
-                requestMessage, GetProfileDetailsByUserNameEmailResponseMessage.class);
+        return restTemplate.postForObject(PROFILES_DETAILS_USERNAME_EMAIL_URL, requestMessage,
+                GetProfileDetailsByUserNameEmailResponseMessage.class, (Object) null);
     }
 }

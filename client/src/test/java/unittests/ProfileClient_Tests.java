@@ -1,7 +1,6 @@
 package unittests;
 
 
-import com.tjazi.lib.messaging.rest.RestClient;
 import com.tjazi.profiles.client.ProfilesClientImpl;
 import com.tjazi.profiles.messages.*;
 import org.junit.Rule;
@@ -9,9 +8,10 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 import org.mockito.ArgumentCaptor;
-import org.mockito.Matchers;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.UUID;
 
@@ -26,29 +26,26 @@ import static org.mockito.Mockito.*;
 @RunWith(MockitoJUnitRunner.class)
 public class ProfileClient_Tests {
 
-    private final static String urlProfilesRegisterProfile = "/profiles/registerprofile";
-    private final static String urlProfilesProfileDetails = "/profiles/profiledetails";
+    private final static String PROFILES_SERVICE_NAME = "profiles-service";
+
+    private final static String urlProfilesRegisterProfile = "http://" + PROFILES_SERVICE_NAME + "/profiles/registerprofile";
+    private final static String urlProfilesProfileDetails = "http://" + PROFILES_SERVICE_NAME + "/profiles/profiledetails";
 
     @Rule
     public ExpectedException thrown = ExpectedException.none();
 
     @Mock
-    public RestClient restClient;
+    public RestTemplate restTemplate;
 
-    @Test
-    public void constructor_NullRestClient_Test() {
-
-        thrown.expect(IllegalArgumentException.class);
-
-        ProfilesClientImpl profilesClient = new ProfilesClientImpl(null);
-    }
+    @InjectMocks
+    public ProfilesClientImpl profilesClient;
 
     @Test
     public void getProfileDetails_nullProfileUuid_Exception_Test() {
 
         thrown.expect(IllegalArgumentException.class);
 
-        createProfilesClient().getProfileDetails(null);
+        profilesClient.getProfileDetails(null);
     }
 
     @Test
@@ -60,20 +57,19 @@ public class ProfileClient_Tests {
         ArgumentCaptor<GetProfileDetailsRequestMessage> requestMessageArgumentCaptor =
                 ArgumentCaptor.forClass(GetProfileDetailsRequestMessage.class);
 
-        ProfilesClientImpl profilesClient = createProfilesClient();
-
-        when(restClient.sendRequestGetResponse(
-                anyString(), anyObject(), eq(GetProfileDetailsResponseMessage.class)))
+        when(restTemplate.postForObject(
+                anyString(), anyObject(), eq(GetProfileDetailsResponseMessage.class), eq(null)))
                 .thenReturn(responseMessage);
 
         // main call
         GetProfileDetailsResponseMessage profileDetailsActual = profilesClient.getProfileDetails(targetProfileUuid);
 
         // verify calls
-        verify(restClient, times(1)).sendRequestGetResponse(
+        verify(restTemplate, times(1)).postForObject(
                 eq(urlProfilesProfileDetails),
                 requestMessageArgumentCaptor.capture(),
-                eq(GetProfileDetailsResponseMessage.class));
+                eq(GetProfileDetailsResponseMessage.class),
+                eq(null));
 
         assertEquals(targetProfileUuid, requestMessageArgumentCaptor.getValue().getProfileUuid());
         assertEquals(responseMessage, profileDetailsActual);
@@ -83,28 +79,28 @@ public class ProfileClient_Tests {
     public void registerNewProfile_NullUserName_Test() {
         thrown.expect(IllegalArgumentException.class);
 
-        createProfilesClient().registerNewProfile(null, "Sample email", null, null);
+        profilesClient.registerNewProfile(null, "Sample email", null, null);
     }
 
     @Test
     public void registerNewProfile_emptyUserName_Test() {
         thrown.expect(IllegalArgumentException.class);
 
-        createProfilesClient().registerNewProfile("", "Sample email", null, null);
+        profilesClient.registerNewProfile("", "Sample email", null, null);
     }
 
     @Test
     public void registerNewProfile_NullUserEmail_Test() {
         thrown.expect(IllegalArgumentException.class);
 
-        createProfilesClient().registerNewProfile("Sample user name", null, null, null);
+        profilesClient.registerNewProfile("Sample user name", null, null, null);
     }
 
     @Test
     public void registerNewProfile_emptyUserEmail_Test() {
         thrown.expect(IllegalArgumentException.class);
 
-        createProfilesClient().registerNewProfile("Sample user name", "", null, null);
+        profilesClient.registerNewProfile("Sample user name", "", null, null);
     }
 
     @Test
@@ -121,11 +117,11 @@ public class ProfileClient_Tests {
         responseMessage.setNewProfileUuid(newProfileUuid);
         responseMessage.setRegisterNewProfileResponseStatus(profileResponseStatus);
 
-        when(restClient.sendRequestGetResponse(anyString(), anyObject(), eq(RegisterNewProfileResponseMessage.class)))
+        when(restTemplate.postForObject(anyString(), anyObject(), eq(RegisterNewProfileResponseMessage.class), eq(null)))
                 .thenReturn(responseMessage);
 
         // call the tested method
-        RegisterNewProfileResponseMessage actualResponseMessage = createProfilesClient().registerNewProfile(userName, userEmail, name, surname);
+        RegisterNewProfileResponseMessage actualResponseMessage = profilesClient.registerNewProfile(userName, userEmail, name, surname);
 
         // assertion
         assertEquals(responseMessage, actualResponseMessage);
@@ -134,18 +130,12 @@ public class ProfileClient_Tests {
 
         ArgumentCaptor<RegisterNewProfileRequestMessage> messageCaptor = ArgumentCaptor.forClass(RegisterNewProfileRequestMessage.class);
 
-        verify(restClient, times(1)).sendRequestGetResponse(
-                eq(urlProfilesRegisterProfile), messageCaptor.capture(), eq(RegisterNewProfileResponseMessage.class));
+        verify(restTemplate, times(1)).postForObject(
+                eq(urlProfilesRegisterProfile), messageCaptor.capture(), eq(RegisterNewProfileResponseMessage.class), eq(null));
 
         assertEquals(userName, messageCaptor.getValue().getUserName());
         assertEquals(userEmail, messageCaptor.getValue().getEmail());
         assertEquals(name, messageCaptor.getValue().getName());
         assertEquals(surname, messageCaptor.getValue().getSurname());
     }
-
-
-    private ProfilesClientImpl createProfilesClient() {
-        return new ProfilesClientImpl(restClient);
-    }
-
 }
