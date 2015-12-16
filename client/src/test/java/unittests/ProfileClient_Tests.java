@@ -11,8 +11,11 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
+import org.springframework.messaging.Message;
+import org.springframework.messaging.MessageChannel;
 import org.springframework.web.client.RestTemplate;
 
+import java.security.MessageDigest;
 import java.util.UUID;
 
 import static org.junit.Assert.*;
@@ -37,6 +40,9 @@ public class ProfileClient_Tests {
     @Mock
     public RestTemplate restTemplate;
 
+    @Mock
+    public MessageChannel messageChannel;
+
     @InjectMocks
     public ProfilesClientImpl profilesClient;
 
@@ -58,7 +64,7 @@ public class ProfileClient_Tests {
                 ArgumentCaptor.forClass(GetProfileDetailsRequestMessage.class);
 
         when(restTemplate.postForObject(
-                anyString(), anyObject(), eq(GetProfileDetailsResponseMessage.class), eq(null)))
+                anyString(), anyObject(), eq(GetProfileDetailsResponseMessage.class), (Object)eq(null)))
                 .thenReturn(responseMessage);
 
         // main call
@@ -69,38 +75,45 @@ public class ProfileClient_Tests {
                 eq(urlProfilesProfileDetails),
                 requestMessageArgumentCaptor.capture(),
                 eq(GetProfileDetailsResponseMessage.class),
-                eq(null));
+                (Object) eq(null));
 
         assertEquals(targetProfileUuid, requestMessageArgumentCaptor.getValue().getProfileUuid());
         assertEquals(responseMessage, profileDetailsActual);
     }
 
     @Test
+    public void registerNewProfile_NullProfileUuid_Test() {
+        thrown.expect(IllegalArgumentException.class);
+
+        profilesClient.registerNewProfile(null, "sample user name", "Sample email", "", "");
+    }
+
+    @Test
     public void registerNewProfile_NullUserName_Test() {
         thrown.expect(IllegalArgumentException.class);
 
-        profilesClient.registerNewProfile(null, "Sample email", null, null);
+        profilesClient.registerNewProfile(UUID.randomUUID(), null, "Sample email", null, null);
     }
 
     @Test
     public void registerNewProfile_emptyUserName_Test() {
         thrown.expect(IllegalArgumentException.class);
 
-        profilesClient.registerNewProfile("", "Sample email", null, null);
+        profilesClient.registerNewProfile(UUID.randomUUID(), "", "Sample email", null, null);
     }
 
     @Test
     public void registerNewProfile_NullUserEmail_Test() {
         thrown.expect(IllegalArgumentException.class);
 
-        profilesClient.registerNewProfile("Sample user name", null, null, null);
+        profilesClient.registerNewProfile(UUID.randomUUID(), "Sample user name", null, null, null);
     }
 
     @Test
     public void registerNewProfile_emptyUserEmail_Test() {
         thrown.expect(IllegalArgumentException.class);
 
-        profilesClient.registerNewProfile("Sample user name", "", null, null);
+        profilesClient.registerNewProfile(UUID.randomUUID(), "Sample user name", "", null, null);
     }
 
     @Test
@@ -111,31 +124,22 @@ public class ProfileClient_Tests {
         final String name = "Name";
         final String surname = "Surname";
         final UUID newProfileUuid = UUID.randomUUID();
-        final RegisterNewProfileResponseStatus profileResponseStatus = RegisterNewProfileResponseStatus.OK;
-
-        RegisterNewProfileResponseMessage responseMessage = new RegisterNewProfileResponseMessage();
-        responseMessage.setNewProfileUuid(newProfileUuid);
-        responseMessage.setRegisterNewProfileResponseStatus(profileResponseStatus);
-
-        when(restTemplate.postForObject(anyString(), anyObject(), eq(RegisterNewProfileResponseMessage.class), eq(null)))
-                .thenReturn(responseMessage);
 
         // call the tested method
-        RegisterNewProfileResponseMessage actualResponseMessage = profilesClient.registerNewProfile(userName, userEmail, name, surname);
+        profilesClient.registerNewProfile(newProfileUuid, userName, userEmail, name, surname);
 
         // assertion
-        assertEquals(responseMessage, actualResponseMessage);
-        assertEquals(responseMessage.getNewProfileUuid(), actualResponseMessage.getNewProfileUuid());
-        assertEquals(responseMessage.getRegisterNewProfileResponseStatus(), actualResponseMessage.getRegisterNewProfileResponseStatus());
 
-        ArgumentCaptor<RegisterNewProfileRequestMessage> messageCaptor = ArgumentCaptor.forClass(RegisterNewProfileRequestMessage.class);
+        ArgumentCaptor<Message> messageCaptor = ArgumentCaptor.forClass(Message.class);
 
-        verify(restTemplate, times(1)).postForObject(
-                eq(urlProfilesRegisterProfile), messageCaptor.capture(), eq(RegisterNewProfileResponseMessage.class), eq(null));
+        verify(messageChannel, times(1)).send(messageCaptor.capture());
 
-        assertEquals(userName, messageCaptor.getValue().getUserName());
-        assertEquals(userEmail, messageCaptor.getValue().getEmail());
-        assertEquals(name, messageCaptor.getValue().getName());
-        assertEquals(surname, messageCaptor.getValue().getSurname());
+        RegisterNewProfileRequestCommand sentCommand = (RegisterNewProfileRequestCommand) messageCaptor.getValue().getPayload();
+
+        assertEquals(newProfileUuid, sentCommand.getProfileUuid());
+        assertEquals(userName, sentCommand.getUserName());
+        assertEquals(userEmail, sentCommand.getEmail());
+        assertEquals(name, sentCommand.getName());
+        assertEquals(surname, sentCommand.getSurname());
     }
 }

@@ -4,6 +4,11 @@ import com.tjazi.profiles.messages.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.stream.annotation.EnableBinding;
+import org.springframework.cloud.stream.annotation.Output;
+import org.springframework.cloud.stream.messaging.Source;
+import org.springframework.messaging.MessageChannel;
+import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.UUID;
@@ -11,22 +16,34 @@ import java.util.UUID;
 /**
  * Created by Krzysztof Wasiak on 10/10/15.
  */
+@EnableBinding(Source.class)
 public class ProfilesClientImpl implements ProfilesClient {
 
     @Autowired
     private RestTemplate restTemplate;
+
+    @Autowired
+    @Output(Source.OUTPUT)
+    private MessageChannel messageChannel;
 
     private Logger log = LoggerFactory.getLogger(ProfilesClientImpl.class);
 
     // this name supposed to be decoded by using eureka service
     private final static String PROFILES_SERVICE_NAME = "profiles-service";
 
-    private final static String PROFILES_REGISTRATION_URL = "http://" + PROFILES_SERVICE_NAME + "/profiles/registerprofile";
     private final static String PROFILES_DETAILS_URL = "http://" + PROFILES_SERVICE_NAME + "/profiles/profiledetails";
     private final static String PROFILES_DETAILS_USERNAME_EMAIL_URL = "http://" + PROFILES_SERVICE_NAME + "/profiles/profiledetails2";
 
-    public RegisterNewProfileResponseMessage registerNewProfile(
+    public void registerNewProfile(
+            UUID profileUuid,
             String userName, String email, String name, String surname) {
+
+        if (profileUuid == null) {
+            String errorMessage = "profileUuid passed is null";
+
+            log.error(errorMessage);
+            throw new IllegalArgumentException(errorMessage);
+        }
 
         if (userName == null || userName.isEmpty()) {
             String errorMessage = "userName passed is either null or empty";
@@ -42,15 +59,15 @@ public class ProfilesClientImpl implements ProfilesClient {
             throw new IllegalArgumentException(errorMessage);
         }
 
-        RegisterNewProfileRequestMessage requestMessage = new RegisterNewProfileRequestMessage();
+        RegisterNewProfileRequestCommand requestMessage = new RegisterNewProfileRequestCommand();
 
+        requestMessage.setProfileUuid(profileUuid);
         requestMessage.setUserName(userName);
         requestMessage.setEmail(email);
         requestMessage.setName(name);
         requestMessage.setSurname(surname);
 
-        return restTemplate.postForObject(PROFILES_REGISTRATION_URL, requestMessage,
-                        RegisterNewProfileResponseMessage.class, (Object) null);
+        this.messageChannel.send(MessageBuilder.withPayload(requestMessage).build());
     }
 
     public GetProfileDetailsResponseMessage getProfileDetails(UUID profileUuid)
