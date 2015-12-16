@@ -16,9 +16,9 @@ import org.springframework.integration.annotation.ServiceActivator;
 
 @EnableBinding(Sink.class)
 @MessageEndpoint
-public class ProfilesRegistrationController {
+public class ProfilesRegistrationCommandEndpoint {
 
-    private static final Logger log = LoggerFactory.getLogger(ProfilesRegistrationController.class);
+    private static final Logger log = LoggerFactory.getLogger(ProfilesRegistrationCommandEndpoint.class);
 
     @Autowired
     private ProfilesRegistrationManager profilesRegistrationManager;
