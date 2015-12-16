@@ -1,14 +1,26 @@
 package com.tjazi.profiles.messages;
 
+import java.util.UUID;
+
 /**
  * Created by Krzysztof Wasiak on 10/10/15.
+ * This is command, which is send via RabbitMQ to register
  */
-public class RegisterNewProfileRequestMessage {
+public class RegisterNewProfileRequestCommand {
 
+    private UUID profileUuid;
     private String userName;
     private String email;
     private String name;
     private String surname;
+
+    public UUID getProfileUuid() {
+        return profileUuid;
+    }
+
+    public void setProfileUuid(UUID profileUuid) {
+        this.profileUuid = profileUuid;
+    }
 
     public String getUserName() {
         return userName;

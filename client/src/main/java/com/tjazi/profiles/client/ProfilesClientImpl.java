@@ -18,6 +18,7 @@ public class ProfilesClientImpl implements ProfilesClient {
 
     private Logger log = LoggerFactory.getLogger(ProfilesClientImpl.class);
 
+    // this name supposed to be decoded by using eureka service
     private final static String PROFILES_SERVICE_NAME = "profiles-service";
 
     private final static String PROFILES_REGISTRATION_URL = "http://" + PROFILES_SERVICE_NAME + "/profiles/registerprofile";
@@ -50,7 +51,6 @@ public class ProfilesClientImpl implements ProfilesClient {
 
         return restTemplate.postForObject(PROFILES_REGISTRATION_URL, requestMessage,
                         RegisterNewProfileResponseMessage.class, (Object) null);
-
     }
 
     public GetProfileDetailsResponseMessage getProfileDetails(UUID profileUuid)
