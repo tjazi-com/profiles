@@ -16,9 +16,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping(value = "/profiles")
-public class ProfilesRegistrationCommandEndpoint {
+public class ProfilesRegistrationController {
 
-    private static final Logger log = LoggerFactory.getLogger(ProfilesRegistrationCommandEndpoint.class);
+    private static final Logger log = LoggerFactory.getLogger(ProfilesRegistrationController.class);
 
     @Autowired
     private ProfilesRegistrationManager profilesRegistrationManager;

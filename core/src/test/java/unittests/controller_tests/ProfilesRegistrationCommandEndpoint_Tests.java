@@ -1,6 +1,6 @@
 package unittests.controller_tests;
 
-import com.tjazi.profiles.service.controller.ProfilesRegistrationCommandEndpoint;
+import com.tjazi.profiles.service.controller.ProfilesRegistrationController;
 import com.tjazi.profiles.service.core.ProfilesRegistrationManager;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,7 +17,7 @@ import static org.junit.Assert.*;
 public class ProfilesRegistrationCommandEndpoint_Tests {
 
     @InjectMocks
-    private ProfilesRegistrationCommandEndpoint profilesRegistrationController;
+    private ProfilesRegistrationController profilesRegistrationController;
 
     @Mock
     private ProfilesRegistrationManager profilesRegistrationManagerMock;

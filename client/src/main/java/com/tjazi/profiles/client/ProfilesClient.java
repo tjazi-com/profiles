@@ -11,7 +11,7 @@ import java.util.UUID;
 
 public interface ProfilesClient {
 
-    void registerNewProfile(UUID profileUuid, String userName, String email, String name, String surname);
+    boolean registerNewProfile(UUID profileUuid, String userName, String email, String name, String surname);
     GetProfileDetailsResponseMessage getProfileDetails(UUID profileUuid);
     GetProfileDetailsByUserNameEmailResponseMessage getProfileDetailsByUserNameEmail(String userNameEmail);
 }

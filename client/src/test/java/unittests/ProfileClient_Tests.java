@@ -31,6 +31,7 @@ public class ProfileClient_Tests {
 
     private final static String PROFILES_SERVICE_NAME = "profiles-service";
 
+    private final static String PROFILES_REGISTRATION_URL = "http://" + PROFILES_SERVICE_NAME + "/profiles/register";
     private final static String urlProfilesRegisterProfile = "http://" + PROFILES_SERVICE_NAME + "/profiles/registerprofile";
     private final static String urlProfilesProfileDetails = "http://" + PROFILES_SERVICE_NAME + "/profiles/profiledetails";
 
@@ -125,16 +126,24 @@ public class ProfileClient_Tests {
         final String surname = "Surname";
         final UUID newProfileUuid = UUID.randomUUID();
 
+        when(restTemplate.postForObject(
+                eq(PROFILES_REGISTRATION_URL), anyObject(), eq(boolean.class), (Object)eq(null)))
+                .thenReturn(true);
+
         // call the tested method
         profilesClient.registerNewProfile(newProfileUuid, userName, userEmail, name, surname);
 
         // assertion
 
-        ArgumentCaptor<Message> messageCaptor = ArgumentCaptor.forClass(Message.class);
+        ArgumentCaptor<RegisterNewProfileRequestCommand> messageCaptor = ArgumentCaptor.forClass(RegisterNewProfileRequestCommand.class);
 
-        verify(messageChannel, times(1)).send(messageCaptor.capture());
+        verify(restTemplate, times(1)).postForObject(
+                eq(PROFILES_REGISTRATION_URL),
+                messageCaptor.capture(),
+                eq(boolean.class),
+                (Object) eq(null));
 
-        RegisterNewProfileRequestCommand sentCommand = (RegisterNewProfileRequestCommand) messageCaptor.getValue().getPayload();
+        RegisterNewProfileRequestCommand sentCommand = messageCaptor.getValue();
 
         assertEquals(newProfileUuid, sentCommand.getProfileUuid());
         assertEquals(userName, sentCommand.getUserName());

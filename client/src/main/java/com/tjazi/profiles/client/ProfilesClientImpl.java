@@ -31,10 +31,11 @@ public class ProfilesClientImpl implements ProfilesClient {
     // this name supposed to be decoded by using eureka service
     private final static String PROFILES_SERVICE_NAME = "profiles-service";
 
+    private final static String PROFILES_REGISTRATION_URL = "http://" + PROFILES_SERVICE_NAME + "/profiles/register";
     private final static String PROFILES_DETAILS_URL = "http://" + PROFILES_SERVICE_NAME + "/profiles/profiledetails";
     private final static String PROFILES_DETAILS_USERNAME_EMAIL_URL = "http://" + PROFILES_SERVICE_NAME + "/profiles/profiledetails2";
 
-    public void registerNewProfile(
+    public boolean registerNewProfile(
             UUID profileUuid,
             String userName, String email, String name, String surname) {
 
@@ -67,7 +68,7 @@ public class ProfilesClientImpl implements ProfilesClient {
         requestMessage.setName(name);
         requestMessage.setSurname(surname);
 
-        this.messageChannel.send(MessageBuilder.withPayload(requestMessage).build());
+        return restTemplate.postForObject(PROFILES_REGISTRATION_URL, requestMessage, boolean.class, (Object) null);
     }
 
     public GetProfileDetailsResponseMessage getProfileDetails(UUID profileUuid)
