@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="16df5779-9d3f-4da0-a554-5aef2d1d8aa3" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../core/src/main/java/com/tjazi/profiles/service/controller/ProfilesRegistrationController.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../core/src/test/java/unittests/controller_tests/ProfilesRegistrationController_Tests.java" afterPath="$PROJECT_DIR$/../core/src/test/java/unittests/controller_tests/ProfilesRegistrationController_Tests.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../core/src/main/java/com/tjazi/profiles/service/controller/ProfilesRegistrationCommandEndpoint.java" afterPath="$PROJECT_DIR$/../core/src/main/java/com/tjazi/profiles/service/endpoint/ProfilesRegistrationCommandEndpoint.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../client/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../client/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../core/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../core/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../core/src/test/java/unittests/controller_tests/ProfilesRegistrationCommandEndpoint_Tests.java" afterPath="$PROJECT_DIR$/../core/src/test/java/unittests/controller_tests/ProfilesRegistrationCommandEndpoint_Tests.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="profiles-messages.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -974,15 +977,15 @@
       <workItem from="1447662839485" duration="16000" />
       <workItem from="1447662892214" duration="56000" />
       <workItem from="1447662962436" duration="520000" />
-      <workItem from="1450266875676" duration="669000" />
+      <workItem from="1450266875676" duration="673000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10797000" />
+    <option name="totallyTimeSpent" value="10801000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="825" extended-state="1" />
+    <frame x="0" y="23" width="1440" height="825" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />

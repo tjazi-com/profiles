@@ -25,23 +25,20 @@ public class ProfilesRegistrationManagerImpl implements ProfilesRegistrationMana
     private final static Logger log = LoggerFactory.getLogger(ProfilesRegistrationManagerImpl.class);
 
     @Override
-    public void registerNewProfile(RegisterNewProfileRequestCommand requestMessage) {
+    public boolean registerNewProfile(RegisterNewProfileRequestCommand requestMessage) {
 
         if (requestMessage == null) {
-            throw new IllegalArgumentException("requestMessage is null.");
+            throw new IllegalArgumentException("requestMessage is null");
         }
 
-        try {
+        ProfileDataDAOModel daoModel = this.generateDaoModelBasedOnRequestMessage(requestMessage);
 
-            UUID newProfileUuid = UUID.randomUUID();
-            ProfileDataDAOModel daoModel = this.generateDaoModelBasedOnRequestMessage(requestMessage);
-
-            if (!this.isDuplicated(daoModel)) {
-                profileDAO.save(daoModel);
-            }
-        } catch (Exception ex){
-            log.error("Got exception in ProfilesRegistrationManagerImpl::registerNewProfile", ex);
+        if (this.isDuplicated(daoModel)) {
+            log.error("Profile with user name {} already exists.", requestMessage.getUserName());
         }
+
+        profileDAO.save(daoModel);
+        return true;
     }
 
     private ProfileDataDAOModel generateDaoModelBasedOnRequestMessage(

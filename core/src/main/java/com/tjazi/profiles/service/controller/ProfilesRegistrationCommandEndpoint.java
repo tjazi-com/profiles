@@ -1,21 +1,21 @@
 package com.tjazi.profiles.service.controller;
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.tjazi.profiles.messages.RegisterNewProfileRequestCommand;
 import com.tjazi.profiles.service.core.ProfilesRegistrationManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cloud.stream.annotation.EnableBinding;
-import org.springframework.cloud.stream.messaging.Sink;
-import org.springframework.integration.annotation.MessageEndpoint;
-import org.springframework.integration.annotation.ServiceActivator;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * Created by Krzysztof Wasiak on 10/10/15.
  */
 
-@EnableBinding(Sink.class)
-@MessageEndpoint
+@RestController
+@RequestMapping(value = "/profiles")
 public class ProfilesRegistrationCommandEndpoint {
 
     private static final Logger log = LoggerFactory.getLogger(ProfilesRegistrationCommandEndpoint.class);
@@ -23,9 +23,24 @@ public class ProfilesRegistrationCommandEndpoint {
     @Autowired
     private ProfilesRegistrationManager profilesRegistrationManager;
 
-    @ServiceActivator(inputChannel = Sink.INPUT)
-    public void registerNewProfileRequestHandler(RegisterNewProfileRequestCommand requestMessage) {
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    @HystrixCommand(fallbackMethod = "registerNewProfileRequestHandlerFallback")
+    public boolean registerNewProfileRequestHandler(RegisterNewProfileRequestCommand requestMessage) throws Exception {
 
-        profilesRegistrationManager.registerNewProfile(requestMessage);
+        try
+        {
+            // any exception here will be fallen-back to the fallback method
+            return profilesRegistrationManager.registerNewProfile(requestMessage);
+        }
+        catch (Exception ex) {
+            log.error("Got unhandled exception: " + ex.toString());
+            throw ex;
+        }
+    }
+
+    public boolean registerNewProfileRequestHandlerFallback(RegisterNewProfileRequestCommand requestMessage) {
+        log.error("registerNewProfileRequestHandlerFallback called, something went wrong with profile registration");
+
+        return false;
     }
 }

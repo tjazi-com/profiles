@@ -7,6 +7,6 @@ import com.tjazi.profiles.messages.RegisterNewProfileRequestCommand;
  */
 public interface ProfilesRegistrationManager {
 
-    void registerNewProfile(RegisterNewProfileRequestCommand requestMessage);
+    boolean registerNewProfile(RegisterNewProfileRequestCommand requestMessage);
 
 }
