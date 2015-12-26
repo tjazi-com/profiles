@@ -29,7 +29,7 @@ import static org.mockito.Mockito.*;
 @RunWith(MockitoJUnitRunner.class)
 public class ProfileClient_Tests {
 
-    private final static String PROFILES_SERVICE_NAME = "profiles-service";
+    private final static String PROFILES_SERVICE_NAME = "profiles-service-core";
 
     private final static String PROFILES_REGISTRATION_URL = "http://" + PROFILES_SERVICE_NAME + "/profiles/register";
     private final static String urlProfilesRegisterProfile = "http://" + PROFILES_SERVICE_NAME + "/profiles/registerprofile";
@@ -127,13 +127,14 @@ public class ProfileClient_Tests {
         final UUID newProfileUuid = UUID.randomUUID();
 
         when(restTemplate.postForObject(
-                eq(PROFILES_REGISTRATION_URL), anyObject(), eq(boolean.class), (Object)eq(null)))
+                eq(PROFILES_REGISTRATION_URL), anyObject(), eq(boolean.class), eq((Object) null) ))
                 .thenReturn(true);
 
         // call the tested method
-        profilesClient.registerNewProfile(newProfileUuid, userName, userEmail, name, surname);
+        boolean profileCreationResult = profilesClient.registerNewProfile(newProfileUuid, userName, userEmail, name, surname);
 
         // assertion
+        assertTrue(profileCreationResult);
 
         ArgumentCaptor<RegisterNewProfileRequestCommand> messageCaptor = ArgumentCaptor.forClass(RegisterNewProfileRequestCommand.class);
 

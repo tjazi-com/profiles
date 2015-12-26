@@ -27,7 +27,7 @@ public class ProfilesClientImpl implements ProfilesClient {
     private Logger log = LoggerFactory.getLogger(ProfilesClientImpl.class);
 
     // this name supposed to be decoded by using eureka service
-    private final static String PROFILES_SERVICE_NAME = "profiles-service";
+    private final static String PROFILES_SERVICE_NAME = "profiles-service-core";
 
     private final static String PROFILES_REGISTRATION_URL = "http://" + PROFILES_SERVICE_NAME + "/profiles/register";
     private final static String PROFILES_DETAILS_URL = "http://" + PROFILES_SERVICE_NAME + "/profiles/profiledetails";

@@ -40,6 +40,11 @@ public class ProfilesRegistrationController {
         }
     }
 
+    /**
+     * Fallback method when profile registration fails.
+     * @param requestMessage Profile registration request message
+     * @return False - always.
+     */
     public boolean registerNewProfileRequestHandlerFallback(RegisterNewProfileRequestCommand requestMessage) {
         log.error("registerNewProfileRequestHandlerFallback called, something went wrong with profile registration");
 
